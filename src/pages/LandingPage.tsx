@@ -350,13 +350,13 @@ export default function LandingPage() {
       
       {/* Navigation - pushed down by banner height */}
       <motion.nav
-        initial={{ y: -100, opacity: 0 }}
+        initial={{ opacity: 0 }}
         animate={{
-          y: navVisible ? 0 : -100,
+          y: navVisible ? 0 : -80,
           opacity: navVisible ? 1 : 0,
         }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        className={`fixed top-[52px] left-0 right-0 z-50 backdrop-blur border-b transition-colors duration-300 ${
+        className={`fixed top-[44px] left-0 right-0 z-50 backdrop-blur border-b transition-colors duration-300 ${
           navSolid ? "bg-background/98 shadow-sm" : "bg-background/80"
         }`}>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
