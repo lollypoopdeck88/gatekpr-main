@@ -18,12 +18,12 @@ export function FoundersBanner() {
             <span className="hidden sm:inline">
               <span className="font-semibold">Launching April 2026</span>
               <span className="mx-2 opacity-60">•</span>
-              Join the waitlist for founders pricing
+              Join the waitlist for early access and discounts
             </span>
             <span className="sm:hidden">
               <span className="font-semibold">April 2026</span>
               <span className="mx-1.5 opacity-60">•</span>
-              Founders pricing available
+              Early access + discounts
             </span>
           </p>
 
