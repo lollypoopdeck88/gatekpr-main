@@ -112,7 +112,7 @@ function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className='pt-32 sm:pt-28 pb-20 px-4 sm:px-6 lg:px-8 relative min-h-[600px] flex items-center overflow-hidden'>
+      className='pt-28 sm:pt-26 pb-20 px-4 sm:px-6 lg:px-8 relative min-h-[600px] flex items-center overflow-hidden'>
       {/* Parallax Background Image */}
       <motion.div className='absolute inset-0 z-0' style={{ y: backgroundY }}>
         <img
@@ -360,7 +360,7 @@ export default function LandingPage() {
           opacity: navVisible ? 1 : 0,
         }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        className={`fixed top-16 sm:top-12 left-0 right-0 z-50 backdrop-blur border-b transition-colors duration-300 ${
+        className={`fixed top-12 sm:top-10 left-0 right-0 z-50 backdrop-blur border-b transition-colors duration-300 ${
           navSolid ? "bg-background/98 shadow-sm" : "bg-background/80"
         }`}>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
