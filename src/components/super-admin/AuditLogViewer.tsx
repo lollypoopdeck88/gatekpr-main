@@ -95,13 +95,15 @@ export function AuditLogViewer({ trigger }: AuditLogViewerProps) {
   const filteredLogs = logs?.filter((log) => {
     if (!searchTerm) return true;
     const term = searchTerm.toLowerCase();
-    const actorName = log.actor_name?.toLowerCase() || "";
-    const actorEmail = log.actor_email?.toLowerCase() || "";
+    const actorId = log.actor_id?.toLowerCase() || "";
     const details = JSON.stringify(log.details || {}).toLowerCase();
+    const action = log.action?.toLowerCase() || "";
+    const entityType = log.entity_type?.toLowerCase() || "";
     return (
-      actorName.includes(term) ||
-      actorEmail.includes(term) ||
-      details.includes(term)
+      actorId.includes(term) ||
+      details.includes(term) ||
+      action.includes(term) ||
+      entityType.includes(term)
     );
   });
 

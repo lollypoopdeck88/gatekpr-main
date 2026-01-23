@@ -35,6 +35,7 @@ import {
 } from "framer-motion";
 import heroCommunity from "@/assets/hero-community.jpg";
 import { FeatureShowcase } from "@/components/landing/FeatureShowcase";
+import { FoundersBanner } from "@/components/landing/FoundersBanner";
 
 // Easing function
 const easeOut: Easing = [0.16, 1, 0.3, 1];
@@ -344,6 +345,9 @@ export default function LandingPage() {
 
   return (
     <div className='min-h-screen bg-background overflow-x-hidden'>
+      {/* Founders Launch Banner */}
+      <FoundersBanner />
+      
       {/* Navigation */}
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
