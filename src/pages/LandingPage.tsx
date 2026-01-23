@@ -112,7 +112,7 @@ function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className='pt-36 pb-20 px-4 sm:px-6 lg:px-8 relative min-h-[600px] flex items-center overflow-hidden'>
+      className='pt-24 pb-20 px-4 sm:px-6 lg:px-8 relative min-h-[600px] flex items-center overflow-hidden'>
       {/* Parallax Background Image */}
       <motion.div className='absolute inset-0 z-0' style={{ y: backgroundY }}>
         <img
@@ -348,15 +348,18 @@ export default function LandingPage() {
       {/* Founders Launch Banner */}
       <FoundersBanner />
       
-      {/* Navigation - pushed down by banner height */}
+      {/* Floating Founders Banner */}
+      <FoundersBanner />
+      
+      {/* Navigation */}
       <motion.nav
-        initial={{ opacity: 0 }}
+        initial={{ y: -100, opacity: 0 }}
         animate={{
-          y: navVisible ? 0 : -80,
+          y: navVisible ? 0 : -100,
           opacity: navVisible ? 1 : 0,
         }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        className={`fixed top-[44px] left-0 right-0 z-50 backdrop-blur border-b transition-colors duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 backdrop-blur border-b transition-colors duration-300 ${
           navSolid ? "bg-background/98 shadow-sm" : "bg-background/80"
         }`}>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
