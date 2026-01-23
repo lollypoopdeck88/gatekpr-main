@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>GateKpr - Modern HOA Management Software | Simplify Payments & Communications</title>
+    <meta name="title" content="GateKpr - Modern HOA Management Software | Simplify Payments & Communications" />
+    <meta name="description" content="GateKpr helps self-managed HOAs and property management companies streamline payments, communications, and documents. Request a demo today." />
+    <meta name="keywords" content="HOA management software, HOA payments, community management, property management, HOA dues collection, resident portal, HOA documents, homeowners association" />
+    <meta name="author" content="GateKpr" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://gatekpr.app" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gatekpr.app" />
+    <meta property="og:title" content="GateKpr - Modern HOA Management, Simplified" />
+    <meta property="og:description" content="Streamline HOA payments, communications, and documents. Perfect for self-managed HOAs and property management companies. Request a demo today." />
+    <meta property="og:image" content="https://gatekpr.app/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="GateKpr" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://gatekpr.app" />
+    <meta name="twitter:title" content="GateKpr - Modern HOA Management, Simplified" />
+    <meta name="twitter:description" content="Streamline HOA payments, communications, and documents. Perfect for self-managed HOAs and property management companies." />
+    <meta name="twitter:image" content="https://gatekpr.app/og-image.jpg" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+    <!-- Structured Data - Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GateKpr",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Modern HOA management software for self-managed communities and property management companies. Streamline payments, communications, and documents.",
+      "url": "https://gatekpr.app",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Request a demo for custom pricing"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "ratingCount": "1",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "featureList": [
+        "Online payment collection",
+        "Document management",
+        "Community announcements",
+        "Resident directory",
+        "Financial tracking",
+        "Email notifications"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "GateKpr",
+        "url": "https://gatekpr.app",
+        "logo": "https://gatekpr.app/logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "hello@gatekpr.app",
+          "contactType": "sales"
+        }
+      }
+    }
+    </script>
+    
+    <!-- Structured Data - FAQPage (for future FAQ section) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "GateKpr",
+      "url": "https://gatekpr.app",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://gatekpr.app/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <!-- Google Ads Conversion Tracking - Replace YOUR_CONVERSION_ID with actual ID -->
+    <!-- Global site tag (gtag.js) - Google Ads -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-CONVERSION_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-CONVERSION_ID');
+      
+      // Google Ads conversion tracking function - call this on form submission
+      window.trackConversion = function(conversionLabel) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-CONVERSION_ID/' + conversionLabel,
+            'event_callback': function() {
+              console.log('Conversion tracked:', conversionLabel);
+            }
+          });
+        }
+      };
+    </script>
+    
+    <!-- Google Analytics 4 - Replace G-XXXXXXX with actual Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXX', {
+        'page_title': document.title,
+        'page_location': window.location.href
+      });
+    </script>
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#1e3a5f" />
+    <meta name="msapplication-TileColor" content="#1e3a5f" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Google Ads Remarketing Tag -->
+    <script>
+      gtag('event', 'page_view', {
+        'send_to': 'AW-CONVERSION_ID',
+        'dynx_pagetype': 'home'
+      });
+    </script>
+    
+    <!-- Noscript fallback for conversion tracking -->
+    <noscript>
+      <img height="1" width="1" style="display:none" alt=""
+        src="https://www.googleadservices.com/pagead/conversion/CONVERSION_ID/?label=CONVERSION_LABEL&guid=ON&script=0" />
+    </noscript>
+  </body>
+</html>

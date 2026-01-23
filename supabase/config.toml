@@ -1,0 +1,40 @@
+project_id = "twazsviaahnbgmmcwxdb"
+
+[functions.create-resident-payment]
+verify_jwt = false
+
+[functions.verify-resident-payment]
+verify_jwt = false
+
+[functions.send-verification-code]
+verify_jwt = false
+
+[functions.verify-code]
+verify_jwt = false
+
+[functions.send-sms]
+verify_jwt = false
+
+[functions.process-scheduled-transfers]
+verify_jwt = false
+
+[functions.seed-test-data]
+verify_jwt = false
+
+[functions.create-test-accounts]
+verify_jwt = false
+
+[functions.send-email-digest]
+verify_jwt = false
+
+[functions.submit-support-ticket]
+verify_jwt = false
+
+[functions.validate-invite]
+verify_jwt = false
+
+[functions.complete-invite]
+verify_jwt = false
+
+[functions.send-email]
+verify_jwt = true
