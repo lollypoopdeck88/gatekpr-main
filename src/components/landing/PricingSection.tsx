@@ -74,7 +74,7 @@ export function PricingSection() {
                     "Unlimited payments & documents",
                     "Email notifications",
                     "Priority onboarding support",
-                    "Lock in this rate forever",
+                    "Lock in this rate for 24 months",
                   ].map((feature, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm">
                       <CheckCircle className="h-4 w-4 text-accent flex-shrink-0" />
