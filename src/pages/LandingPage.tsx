@@ -585,22 +585,22 @@ export default function LandingPage() {
             className='grid md:grid-cols-2 gap-6'>
             {[
               {
-                problem: '"I can never see the status of my service request"',
+                problem: "I can never see the status of my service request",
                 solution:
                   "Real-time status tracking with notifications at every step—Open, In Progress, Resolved, Closed.",
               },
               {
-                problem: '"The app crashes constantly and is unusable"',
+                problem: "The app crashes constantly and is unusable",
                 solution:
                   "Modern web app that works flawlessly on any device. No app store downloads required.",
               },
               {
-                problem: '"I never get notified when things change"',
+                problem: "I never get notified when things change",
                 solution:
                   "Automated email notifications for payments, maintenance updates, and reservation approvals.",
               },
               {
-                problem: '"The reports are useless for board meetings"',
+                problem: "The reports are useless for board meetings",
                 solution:
                   "Export professional PDF and Excel financial reports with one click. Perfect for audits.",
               },
@@ -608,17 +608,25 @@ export default function LandingPage() {
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                className='bg-card rounded-xl p-6 border shadow-sm'>
-                <p className='text-sm text-destructive/80 italic mb-3 flex items-start gap-2'>
-                  <span className='text-destructive text-lg leading-none'>
-                    "
-                  </span>
-                  {item.problem.slice(1, -1)}
-                </p>
-                <div className='flex items-start gap-3'>
-                  <CheckCircle className='h-5 w-5 text-accent flex-shrink-0 mt-0.5' />
-                  <p className='text-sm text-foreground'>{item.solution}</p>
-                </div>
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.25 }}
+                className='group cursor-default'>
+                <Card className='h-full border-2 hover:border-secondary/40 hover:shadow-lg transition-all duration-300'>
+                  <CardContent className='p-6'>
+                    <div className='flex items-start gap-3 mb-4'>
+                      <div className='h-10 w-10 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors duration-300'>
+                        <Eye className='h-5 w-5 text-secondary' />
+                      </div>
+                      <p className='text-sm text-muted-foreground italic pt-2'>
+                        "{item.problem}"
+                      </p>
+                    </div>
+                    <div className='flex items-start gap-3 pl-1'>
+                      <CheckCircle className='h-5 w-5 text-secondary flex-shrink-0 mt-0.5' />
+                      <p className='text-sm text-foreground'>{item.solution}</p>
+                    </div>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
           </motion.div>
