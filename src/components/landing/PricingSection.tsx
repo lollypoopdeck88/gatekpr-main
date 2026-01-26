@@ -61,11 +61,11 @@ export function PricingSection() {
                     <span className="text-5xl font-bold text-foreground">$99</span>
                     <span className="text-muted-foreground">/month</span>
                   </div>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    or <span className="font-semibold text-foreground">$999/year</span>{" "}
-                    <span className="text-accent">(save $189)</span>
-                  </p>
-                </div>
+                <p className="text-sm text-muted-foreground mt-2">
+                  or <span className="font-semibold text-foreground">$999/year</span>{" "}
+                  <span className="text-secondary">(save $189)</span>
+                </p>
+              </div>
                 
                 <ul className="space-y-3 mb-8">
                   {[
@@ -77,7 +77,7 @@ export function PricingSection() {
                     "Lock in this rate for 24 months",
                   ].map((feature, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm">
-                      <CheckCircle className="h-4 w-4 text-accent flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-secondary flex-shrink-0" />
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -103,11 +103,11 @@ export function PricingSection() {
                     <span className="text-5xl font-bold text-foreground">$129</span>
                     <span className="text-muted-foreground">/month</span>
                   </div>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    or <span className="font-semibold text-foreground">$1,299/year</span>{" "}
-                    <span className="text-accent">(save $249)</span>
-                  </p>
-                </div>
+                <p className="text-sm text-muted-foreground mt-2">
+                  or <span className="font-semibold text-foreground">$1,299/year</span>{" "}
+                  <span className="text-secondary">(save $249)</span>
+                </p>
+              </div>
                 
                 <ul className="space-y-3 mb-8">
                   {[
@@ -118,7 +118,7 @@ export function PricingSection() {
                     "Onboarding assistance",
                   ].map((feature, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm">
-                      <CheckCircle className="h-4 w-4 text-accent flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-secondary flex-shrink-0" />
                       <span>{feature}</span>
                     </li>
                   ))}

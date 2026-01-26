@@ -463,7 +463,7 @@ export default function LandingPage() {
                           whileInView={{ opacity: 1, x: 0 }}
                           transition={{ delay: i * 0.1 }}
                           viewport={{ once: true }}>
-                          <CheckCircle className='h-4 w-4 text-accent flex-shrink-0' />
+                          <CheckCircle className='h-4 w-4 text-secondary flex-shrink-0' />
                           <span>{item}</span>
                         </motion.li>
                       ))}
@@ -492,8 +492,8 @@ export default function LandingPage() {
                     <ul className='space-y-2'>
                       {[
                         "Multi-property dashboard",
-                        "Bulk operations",
-                        "Volume discounts available",
+                        "Custom KPI metrics & drill-downs",
+                        "Bulk operations & volume discounts",
                       ].map((item, i) => (
                         <motion.li
                           key={item}
@@ -502,7 +502,7 @@ export default function LandingPage() {
                           whileInView={{ opacity: 1, x: 0 }}
                           transition={{ delay: i * 0.1 }}
                           viewport={{ once: true }}>
-                          <CheckCircle className='h-4 w-4 text-accent flex-shrink-0' />
+                          <CheckCircle className='h-4 w-4 text-secondary flex-shrink-0' />
                           <span>{item}</span>
                         </motion.li>
                       ))}
