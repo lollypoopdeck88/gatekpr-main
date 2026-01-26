@@ -235,26 +235,6 @@ const features = [
   },
 ];
 
-const whyGateKpr = [
-  {
-    icon: QrCode,
-    title: "Instant Onboarding",
-    description:
-      "Share a QR code and residents join in seconds. Post it in your newsletter or common areas.",
-  },
-  {
-    icon: Wrench,
-    title: "Track Every Request",
-    description:
-      "Maintenance requests with real-time status updates keep everyone informed.",
-  },
-  {
-    icon: Settings,
-    title: "Use What You Need",
-    description:
-      "Start with payments and documents. Add violations, spaces, and more when you need them.",
-  },
-];
 
 // How it works steps
 const howItWorksSteps = [
@@ -379,34 +359,57 @@ export default function LandingPage() {
       {/* Hero Section */}
       <HeroSection />
 
-      <section className='py-16 px-4 sm:px-6 lg:px-8'>
+      {/* Why Choose GateKpr Section */}
+      <section className='py-20 bg-secondary px-4 sm:px-6 lg:px-8 overflow-hidden'>
         <div className='max-w-7xl mx-auto'>
+          <AnimatedSection className='text-center mb-12'>
+            <h2 className='text-3xl sm:text-4xl font-bold mb-4 text-secondary-foreground'>
+              Why Choose GateKpr?
+            </h2>
+            <p className='text-lg text-secondary-foreground/90 max-w-2xl mx-auto'>
+              We built GateKpr because we know running an HOA shouldn't feel
+              like a second job. Here's what makes us different.
+            </p>
+          </AnimatedSection>
+
           <motion.div
             initial='hidden'
-            animate='visible'
+            whileInView='visible'
+            viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-            {whyGateKpr.map((item, index) => (
+            className='grid md:grid-cols-3 gap-8 max-w-4xl mx-auto'>
+            {[
+              {
+                title: "No Hidden Fees",
+                desc: "Transparent pricing tailored to your community size. No surprises.",
+              },
+              {
+                title: "Self-Service Setup",
+                desc: "Sign up, share your QR code, and you're ready to go. No training needed.",
+              },
+              {
+                title: "Built for Simplicity",
+                desc: "Clean design that residents and board members actually enjoy using.",
+              },
+            ].map((item, index) => (
               <motion.div
                 key={index}
-                variants={scaleIn}
+                variants={fadeInUp}
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.25 }}
                 className='cursor-default'>
-                <Card className='text-center border-2 hover:border-secondary/40 transition-all duration-300 hover:shadow-xl h-full overflow-hidden group'>
-                  <CardContent className='pt-6 pb-6 relative'>
-                    {/* Subtle gradient overlay on hover */}
-                    <div className='absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+                <Card className='bg-white/90 border-white h-full overflow-hidden group hover:bg-white transition-all duration-300 shadow-lg'>
+                  <CardContent className='p-6 text-center relative'>
                     <motion.div
-                      className='h-14 w-14 rounded-2xl bg-secondary/10 flex items-center justify-center mx-auto mb-4 relative z-10 group-hover:bg-secondary/20 transition-colors duration-300'
-                      whileHover={{ rotate: 5, scale: 1.1 }}>
-                      <item.icon className='h-7 w-7 text-secondary group-hover:scale-110 transition-transform duration-300' />
+                      className='h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/30 transition-colors duration-300'
+                      whileHover={{ scale: 1.1 }}>
+                      <CheckCircle className='h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300' />
                     </motion.div>
-                    <h3 className='font-semibold text-foreground mb-2 relative z-10'>
+                    <h3 className='font-semibold text-lg mb-2 text-foreground'>
                       {item.title}
                     </h3>
-                    <p className='text-sm text-muted-foreground relative z-10'>
-                      {item.description}
+                    <p className='text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300'>
+                      {item.desc}
                     </p>
                   </CardContent>
                 </Card>
@@ -622,65 +625,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Why Choose GateKpr Section */}
-      <section className='py-20 bg-secondary px-4 sm:px-6 lg:px-8 overflow-hidden'>
-        <div className='max-w-7xl mx-auto'>
-          <AnimatedSection className='text-center mb-12'>
-            <h2 className='text-3xl sm:text-4xl font-bold mb-4 text-secondary-foreground'>
-              Why Choose GateKpr?
-            </h2>
-            <p className='text-lg text-secondary-foreground/90 max-w-2xl mx-auto'>
-              We built GateKpr because we know running an HOA shouldn't feel
-              like a second job. Here's what makes us different.
-            </p>
-          </AnimatedSection>
-
-          <motion.div
-            initial='hidden'
-            whileInView='visible'
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className='grid md:grid-cols-3 gap-8 max-w-4xl mx-auto'>
-            {[
-              {
-                title: "No Hidden Fees",
-                desc: "Transparent pricing tailored to your community size. No surprises.",
-              },
-              {
-                title: "Personalized Setup",
-                desc: "Our team helps you import data and configure everything—at no extra cost.",
-              },
-              {
-                title: "Built for Simplicity",
-                desc: "Clean design that residents and board members actually enjoy using.",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.25 }}
-                className='cursor-default'>
-                <Card className='bg-white/90 border-white h-full overflow-hidden group hover:bg-white transition-all duration-300 shadow-lg'>
-                  <CardContent className='p-6 text-center relative'>
-                    <motion.div
-                      className='h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/30 transition-colors duration-300'
-                      whileHover={{ scale: 1.1 }}>
-                      <CheckCircle className='h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300' />
-                    </motion.div>
-                    <h3 className='font-semibold text-lg mb-2 text-foreground'>
-                      {item.title}
-                    </h3>
-                    <p className='text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300'>
-                      {item.desc}
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
       {/* How It Works Section */}
       <section
