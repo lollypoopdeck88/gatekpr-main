@@ -360,13 +360,13 @@ export default function LandingPage() {
       <HeroSection />
 
       {/* Why Choose GateKpr Section */}
-      <section className='py-20 bg-secondary px-4 sm:px-6 lg:px-8 overflow-hidden'>
+      <section className='py-20 bg-secondary/20 px-4 sm:px-6 lg:px-8 overflow-hidden'>
         <div className='max-w-7xl mx-auto'>
           <AnimatedSection className='text-center mb-12'>
-            <h2 className='text-3xl sm:text-4xl font-bold mb-4 text-secondary-foreground'>
+            <h2 className='text-3xl sm:text-4xl font-bold mb-4 text-foreground'>
               Why Choose GateKpr?
             </h2>
-            <p className='text-lg text-secondary-foreground/90 max-w-2xl mx-auto'>
+            <p className='text-lg text-muted-foreground max-w-2xl mx-auto'>
               We built GateKpr because we know running an HOA shouldn't feel
               like a second job. Here's what makes us different.
             </p>
@@ -398,12 +398,12 @@ export default function LandingPage() {
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.25 }}
                 className='cursor-default'>
-                <Card className='bg-white/90 border-white h-full overflow-hidden group hover:bg-white transition-all duration-300 shadow-lg'>
+                <Card className='bg-card border h-full overflow-hidden group hover:shadow-lg transition-all duration-300'>
                   <CardContent className='p-6 text-center relative'>
                     <motion.div
-                      className='h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/30 transition-colors duration-300'
+                      className='h-12 w-12 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-secondary/30 transition-colors duration-300'
                       whileHover={{ scale: 1.1 }}>
-                      <CheckCircle className='h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300' />
+                      <CheckCircle className='h-6 w-6 text-secondary group-hover:scale-110 transition-transform duration-300' />
                     </motion.div>
                     <h3 className='font-semibold text-lg mb-2 text-foreground'>
                       {item.title}
@@ -678,106 +678,18 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* App Download / QR Code Section */}
-      <section className='py-20 px-4 sm:px-6 lg:px-8'>
-        <div className='max-w-5xl mx-auto'>
-          <div className='grid md:grid-cols-2 gap-12 items-center'>
-            <AnimatedSection>
-              <motion.div variants={slideInLeft}>
-                <div className='inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mb-4'>
-                  <Smartphone className='h-4 w-4' />
-                  Works on Any Device
-                </div>
-                <h2 className='text-3xl sm:text-4xl font-bold text-foreground mb-4'>
-                  Easy Resident Onboarding
-                </h2>
-                <p className='text-lg text-muted-foreground mb-6'>
-                  Once your HOA is set up, share your unique QR code with
-                  residents. They scan, sign up, and they're in. Post it on your
-                  bulletin board, include it in newsletters, or share it on
-                  social media.
-                </p>
-                <ul className='space-y-3 mb-8'>
-                  {[
-                    "Printable QR codes for easy distribution",
-                    "No app store download required—works in browser",
-                    "Residents join your community in under a minute",
-                  ].map((item, i) => (
-                    <motion.li
-                      key={item}
-                      className='flex items-center gap-3 text-foreground'
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      viewport={{ once: true }}>
-                      <CheckCircle className='h-5 w-5 text-accent flex-shrink-0' />
-                      <span>{item}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-                <div className='flex flex-col sm:flex-row gap-3'>
-                  <Link to='/signup'>
-                    <Button
-                      size='lg'
-                      className='bg-secondary hover:bg-secondary/90'>
-                      Create Your HOA
-                      <ArrowRight className='ml-2 h-5 w-5' />
-                    </Button>
-                  </Link>
-                </div>
-              </motion.div>
-            </AnimatedSection>
-
-            <AnimatedSection>
-              <motion.div
-                variants={slideInRight}
-                className='flex justify-center'>
-                <Card className='border-2 max-w-sm w-full'>
-                  <CardContent className='p-8 text-center'>
-                    <div className='mb-4'>
-                      <div className='h-48 w-48 mx-auto bg-muted rounded-xl flex items-center justify-center border-2 border-dashed border-muted-foreground/30'>
-                        <QrCode className='h-24 w-24 text-muted-foreground/50' />
-                      </div>
-                    </div>
-                    <h3 className='font-semibold text-foreground mb-2'>
-                      Your Community QR Code
-                    </h3>
-                    <p className='text-sm text-muted-foreground mb-4'>
-                      After signup, you'll get a unique QR code for your
-                      community that residents can scan to join.
-                    </p>
-                    <div className='flex gap-2 justify-center'>
-                      <Button variant='outline' size='sm' disabled>
-                        <Download className='h-4 w-4 mr-2' />
-                        Download PNG
-                      </Button>
-                      <Button variant='outline' size='sm' disabled>
-                        <Share2 className='h-4 w-4 mr-2' />
-                        Share
-                      </Button>
-                    </div>
-                    <p className='text-xs text-muted-foreground mt-3'>
-                      Available after creating your HOA
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
 
       {/* Pricing Section */}
       <PricingSection />
 
       {/* Final CTA */}
-      <section className='py-20 bg-secondary px-4 sm:px-6 lg:px-8'>
+      <section className='py-20 bg-primary px-4 sm:px-6 lg:px-8'>
         <div className='max-w-3xl mx-auto text-center'>
           <AnimatedSection>
-            <h2 className='text-3xl sm:text-4xl font-bold mb-4 text-secondary-foreground'>
+            <h2 className='text-3xl sm:text-4xl font-bold mb-4 text-primary-foreground'>
               Ready to Simplify Your HOA?
             </h2>
-            <p className='text-lg text-secondary-foreground/90 mb-8'>
+            <p className='text-lg text-primary-foreground/90 mb-8'>
               Join communities already using GateKpr to streamline payments,
               documents, and communication.
             </p>
@@ -788,14 +700,14 @@ export default function LandingPage() {
                 className='inline-block'>
                 <Button
                   size='lg'
-                  className='bg-white text-secondary hover:bg-white/90 text-lg px-8'>
-                  Get Started
+                  className='bg-secondary text-secondary-foreground hover:bg-secondary/90 text-lg px-8'>
+                  Start Your Free Trial
                   <ArrowRight className='ml-2 h-5 w-5' />
                 </Button>
               </motion.div>
             </Link>
-            <p className='text-sm text-secondary-foreground/70 mt-4'>
-              Simple pricing based on community size • Set up in minutes
+            <p className='text-sm text-primary-foreground/70 mt-4'>
+              No credit card required • Set up in minutes
             </p>
           </AnimatedSection>
         </div>
