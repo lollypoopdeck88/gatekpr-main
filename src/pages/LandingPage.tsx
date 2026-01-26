@@ -36,6 +36,7 @@ import {
 import heroCommunity from "@/assets/hero-community.jpg";
 import { FeatureShowcase } from "@/components/landing/FeatureShowcase";
 import { FoundersBanner } from "@/components/landing/FoundersBanner";
+import { PricingSection } from "@/components/landing/PricingSection";
 
 // Easing function
 const easeOut: Easing = [0.16, 1, 0.3, 1];
@@ -170,14 +171,14 @@ function HeroSection() {
               </motion.div>
             </Link>
             <motion.a
-              href='#how-it-works'
+              href='#pricing'
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}>
               <Button
                 size='lg'
                 variant='outline'
                 className='text-lg px-8 bg-background/80 backdrop-blur-sm'>
-                See How It Works
+                View Pricing
               </Button>
             </motion.a>
           </motion.div>
@@ -201,63 +202,36 @@ const features = [
     title: "Online Payments",
     description:
       "Accept dues via credit card or ACH. Residents pay in seconds with calendar reminders.",
-    isNew: false,
   },
   {
     icon: Wrench,
     title: "Maintenance Requests",
     description:
       "Residents submit requests with real-time status tracking. Never lose a repair request again.",
-    isNew: true,
   },
   {
     icon: CalendarCheck,
     title: "Space Reservations",
     description:
       "Book clubhouses, pools, and courts online. Add events to Google or Apple Calendar instantly.",
-    isNew: true,
-  },
-  {
-    icon: Download,
-    title: "Financial Reports",
-    description:
-      "Export PDF and Excel reports for board meetings. Perfect for treasurers and audits.",
-    isNew: true,
   },
   {
     icon: Bell,
     title: "Smart Notifications",
     description:
       "Automated email alerts for payments, requests, and approvals. SMS coming soon.",
-    isNew: false,
-  },
-  {
-    icon: Sparkles,
-    title: "Guided Onboarding",
-    description:
-      "New residents get a personalized welcome tour with your custom HOA message.",
-    isNew: true,
   },
   {
     icon: FileText,
     title: "Document Library",
     description:
       "Securely store and share bylaws, meeting minutes, rules, and important notices.",
-    isNew: false,
   },
   {
     icon: Users,
     title: "Resident Directory",
     description:
       "Searchable directory helps neighbors connect. Privacy controls keep info safe.",
-    isNew: false,
-  },
-  {
-    icon: BarChart3,
-    title: "Financial Tracking",
-    description:
-      "Track payments, outstanding balances, and generate comprehensive financial reports.",
-    isNew: false,
   },
 ];
 
@@ -348,9 +322,6 @@ export default function LandingPage() {
       {/* Founders Launch Banner */}
       <FoundersBanner />
       
-      {/* Floating Founders Banner */}
-      <FoundersBanner />
-      
       {/* Navigation - offset by banner height (~52px with py-3) */}
       <motion.nav
         // Move fully above the fixed top banner when hidden so it never peeks out underneath.
@@ -371,6 +342,7 @@ export default function LandingPage() {
             <div className='hidden md:flex items-center gap-8'>
               {[
                 { label: "Features", href: "#features" },
+                { label: "Pricing", href: "#pricing" },
                 { label: "How It Works", href: "#how-it-works" },
               ].map((item) => (
                 <motion.a
@@ -547,10 +519,6 @@ export default function LandingPage() {
       <section id='features' className='py-20 px-4 sm:px-6 lg:px-8'>
         <div className='max-w-7xl mx-auto'>
           <AnimatedSection className='text-center mb-16'>
-            <div className='inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mb-4'>
-              <Sparkles className='h-4 w-4' />
-              New Features Added
-            </div>
             <h2 className='text-3xl sm:text-4xl font-bold text-foreground mb-4'>
               Everything You Need to Run Your HOA
             </h2>
@@ -575,13 +543,6 @@ export default function LandingPage() {
                 transition={{ duration: 0.25 }}
                 className='cursor-default'>
                 <Card className='group hover:shadow-xl transition-all duration-300 border-2 hover:border-secondary/40 h-full overflow-hidden relative'>
-                  {feature.isNew && (
-                    <div className='absolute top-3 right-3 z-20'>
-                      <span className='inline-flex items-center gap-1 bg-accent text-accent-foreground text-xs font-bold px-2 py-1 rounded-full'>
-                        NEW
-                      </span>
-                    </div>
-                  )}
                   <CardContent className='p-6 relative'>
                     {/* Subtle shimmer effect on hover */}
                     <div className='absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
@@ -865,6 +826,9 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Pricing Section */}
+      <PricingSection />
+
       {/* Final CTA */}
       <section className='py-20 bg-secondary px-4 sm:px-6 lg:px-8'>
         <div className='max-w-3xl mx-auto text-center'>
@@ -953,7 +917,7 @@ export default function LandingPage() {
                 </li>
                 <li>
                   <a
-                    href='#'
+                    href='#pricing'
                     className='hover:text-background transition-colors'>
                     Pricing
                   </a>
