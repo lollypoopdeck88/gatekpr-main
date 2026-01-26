@@ -379,9 +379,6 @@ export default function LandingPage() {
       {/* Hero Section */}
       <HeroSection />
 
-      {/* Interactive Feature Showcase */}
-      <FeatureShowcase />
-
       <section className='py-16 px-4 sm:px-6 lg:px-8'>
         <div className='max-w-7xl mx-auto'>
           <motion.div
