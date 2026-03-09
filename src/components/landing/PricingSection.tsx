@@ -24,7 +24,7 @@ const staggerContainer = {
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial="hidden"
@@ -34,10 +34,10 @@ export function PricingSection() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Simple, Transparent Pricing
+            Simple, transparent pricing
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            One plan. All features. No hidden fees or per-resident charges.
+            Everything your community needs, included. No hidden fees, no per-resident charges.
           </p>
         </motion.div>
 
@@ -61,18 +61,18 @@ export function PricingSection() {
                     <span className="text-5xl font-bold text-foreground">$99</span>
                     <span className="text-muted-foreground">/month</span>
                   </div>
-                <p className="text-sm text-muted-foreground mt-2">
-                  or <span className="font-semibold text-foreground">$999/year</span>{" "}
-                  <span className="text-secondary">(save $189)</span>
-                </p>
-              </div>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    or <span className="font-semibold text-foreground">$999/year</span>{" "}
+                    <span className="text-secondary">(save $189)</span>
+                  </p>
+                </div>
                 
                 <ul className="space-y-3 mb-8">
                   {[
                     "All features included",
                     "Unlimited residents",
-                    "Unlimited payments & documents",
-                    "Email notifications",
+                    "Automated financial reporting",
+                    "Bank integrations",
                     "Priority onboarding support",
                     "Lock in this rate for 24 months",
                   ].map((feature, i) => (
@@ -85,7 +85,7 @@ export function PricingSection() {
 
                 <Link to="/signup" className="block">
                   <Button size="lg" className="w-full bg-secondary hover:bg-secondary/90">
-                    Get Started
+                    Start Your Community
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
@@ -103,18 +103,18 @@ export function PricingSection() {
                     <span className="text-5xl font-bold text-foreground">$129</span>
                     <span className="text-muted-foreground">/month</span>
                   </div>
-                <p className="text-sm text-muted-foreground mt-2">
-                  or <span className="font-semibold text-foreground">$1,299/year</span>{" "}
-                  <span className="text-secondary">(save $249)</span>
-                </p>
-              </div>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    or <span className="font-semibold text-foreground">$1,299/year</span>{" "}
+                    <span className="text-secondary">(save $249)</span>
+                  </p>
+                </div>
                 
                 <ul className="space-y-3 mb-8">
                   {[
                     "All features included",
                     "Unlimited residents",
-                    "Unlimited payments & documents",
-                    "Email notifications",
+                    "Automated financial reporting",
+                    "Bank integrations",
                     "Onboarding assistance",
                   ].map((feature, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm">
@@ -126,7 +126,7 @@ export function PricingSection() {
 
                 <Link to="/signup" className="block">
                   <Button size="lg" variant="outline" className="w-full">
-                    Get Started
+                    Start Your Community
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
@@ -146,15 +146,15 @@ export function PricingSection() {
           <Card className="border-2 border-dashed max-w-2xl mx-auto">
             <CardContent className="p-6">
               <h3 className="font-semibold text-foreground mb-2">
-                Managing Multiple HOAs?
+                Managing multiple HOAs?
               </h3>
               <p className="text-sm text-muted-foreground mb-4">
-                Property management companies can get volume discounts for multi-HOA accounts.
+                Property management companies get volume discounts for multi-community accounts.
               </p>
               <a href="mailto:hello@gatekpr.app?subject=Multi-HOA Pricing Inquiry">
                 <Button variant="outline" size="sm">
                   <Mail className="h-4 w-4 mr-2" />
-                  Inquire About Multi-HOA Discounts
+                  Inquire About Multi-HOA Pricing
                 </Button>
               </a>
             </CardContent>

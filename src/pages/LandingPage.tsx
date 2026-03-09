@@ -13,15 +13,16 @@ import {
   Building2,
   Home,
   Wrench,
-  CalendarCheck,
-  Download,
-  Sparkles,
-  QrCode,
+  TrendingUp,
   Smartphone,
-  Settings,
-  Share2,
+  Shield,
+  Zap,
+  XCircle,
+  PieChart,
+  Landmark,
   Mail,
-  Eye,
+  Globe,
+  UserCircle,
 } from "lucide-react";
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
@@ -33,15 +34,11 @@ import {
   useMotionValueEvent,
   type Easing,
 } from "framer-motion";
-import heroCommunity from "@/assets/hero-community.jpg";
-import { FeatureShowcase } from "@/components/landing/FeatureShowcase";
 import { FoundersBanner } from "@/components/landing/FoundersBanner";
 import { PricingSection } from "@/components/landing/PricingSection";
 
-// Easing function
 const easeOut: Easing = [0.16, 1, 0.3, 1];
 
-// Animation variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
@@ -58,26 +55,6 @@ const staggerContainer = {
   },
 };
 
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.5, ease: easeOut },
-  },
-};
-
-const slideInLeft = {
-  hidden: { opacity: 0, x: -50 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: easeOut } },
-};
-
-const slideInRight = {
-  hidden: { opacity: 0, x: 50 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: easeOut } },
-};
-
-// Animated section wrapper
 function AnimatedSection({
   children,
   className = "",
@@ -91,7 +68,7 @@ function AnimatedSection({
   return (
     <motion.div
       ref={ref}
-      initial='hidden'
+      initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={fadeInUp}
       className={className}>
@@ -100,211 +77,53 @@ function AnimatedSection({
   );
 }
 
-// Hero Section with parallax effect
-function HeroSection() {
-  const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-
-  return (
-    <section
-      ref={heroRef}
-      className='pt-28 sm:pt-26 pb-20 px-4 sm:px-6 lg:px-8 relative min-h-[600px] flex items-center overflow-hidden'>
-      {/* Parallax Background Image */}
-      <motion.div className='absolute inset-0 z-0' style={{ y: backgroundY }}>
-        <img
-          src={heroCommunity}
-          alt='Beautiful gated community entrance with open gates'
-          className='w-full h-[120%] object-cover'
-        />
-        {/* Whitewash gradient overlay for text readability */}
-        <div className='absolute inset-0 bg-gradient-to-r from-background/95 via-background/85 to-background/40 lg:to-transparent' />
-      </motion.div>
-
-      <div className='max-w-7xl mx-auto relative z-10 w-full'>
-        <div className='max-w-2xl'>
-          {/* Text Content */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className='text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6'>
-            Modern HOA Management,{" "}
-            <motion.span
-              className='text-secondary'
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.3 }}>
-              Simplified
-            </motion.span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className='text-lg sm:text-xl text-muted-foreground mb-8 max-w-xl'>
-            GateKpr helps self-managed HOAs and property management companies
-            streamline payments, communications, and documents—all in one
-            beautiful platform.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className='flex flex-col sm:flex-row items-start gap-4'>
-            <Link to='/signup'>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}>
-                <Button
-                  size='lg'
-                  className='bg-secondary hover:bg-secondary/90 text-lg px-8'>
-                  Get Started
-                  <ArrowRight className='ml-2 h-5 w-5' />
-                </Button>
-              </motion.div>
-            </Link>
-            <motion.a
-              href='#pricing'
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}>
-              <Button
-                size='lg'
-                variant='outline'
-                className='text-lg px-8 bg-background/80 backdrop-blur-sm'>
-                View Pricing
-              </Button>
-            </motion.a>
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, delay: 0.4 }}
-            className='text-sm text-muted-foreground mt-4'>
-            Set up in minutes • Simple pricing based on community size
-          </motion.p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const features = [
-  {
-    icon: CreditCard,
-    title: "Online Payments",
-    description:
-      "Accept dues via credit card or ACH. Residents pay in seconds with calendar reminders.",
-  },
-  {
-    icon: Wrench,
-    title: "Maintenance Requests",
-    description:
-      "Residents submit requests with real-time status tracking. Never lose a repair request again.",
-  },
-  {
-    icon: CalendarCheck,
-    title: "Space Reservations",
-    description:
-      "Book clubhouses, pools, and courts online. Add events to Google or Apple Calendar instantly.",
-  },
-  {
-    icon: Bell,
-    title: "Smart Notifications",
-    description:
-      "Automated email alerts for payments, requests, and approvals. SMS coming soon.",
-  },
-  {
-    icon: FileText,
-    title: "Document Library",
-    description:
-      "Securely store and share bylaws, meeting minutes, rules, and important notices.",
-  },
-  {
-    icon: Users,
-    title: "Resident Directory",
-    description:
-      "Searchable directory helps neighbors connect. Privacy controls keep info safe.",
-  },
-];
-
-
-// How it works steps
-const howItWorksSteps = [
-  {
-    step: 1,
-    icon: CreditCard,
-    title: "Create Your Account",
-    description:
-      "Sign up and explore the platform. See all the features available to your community.",
-  },
-  {
-    step: 2,
-    icon: Share2,
-    title: "Share Your QR Code",
-    description:
-      "Get a unique QR code for your community. Print it, post it, share it anywhere.",
-  },
-  {
-    step: 3,
-    icon: Settings,
-    title: "Set Up the Essentials",
-    description:
-      "Add payment schedules, upload documents, and connect your HOA bank account.",
-  },
-];
-
 export default function LandingPage() {
   const { user, isSuperAdmin, role, isLoading } = useAuth();
-
-  // Redirect authenticated super_admins to their admin dashboard
-  if (!isLoading && user && role !== null && isSuperAdmin) {
-    return <Navigate to='/admin/super' replace />;
-  }
-
-  const featuresRef = useRef(null);
-  const featuresInView = useInView(featuresRef, {
-    once: true,
-    margin: "-100px",
-  });
-
-  // Track scroll for navbar animation
   const { scrollY } = useScroll();
   const [navVisible, setNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [navSolid, setNavSolid] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    // Show/hide based on scroll direction
     if (latest < 100) {
       setNavVisible(true);
       setNavSolid(false);
     } else {
       setNavSolid(true);
       if (latest > lastScrollY && latest > 200) {
-        setNavVisible(false); // Scrolling down
+        setNavVisible(false);
       } else {
-        setNavVisible(true); // Scrolling up
+        setNavVisible(true);
+      }
+    }
+    setLastScrollY(latest);
+  });
+
+  if (!isLoading && user && role !== null && isSuperAdmin) {
+    return <Navigate to="/admin/super" replace />;
+  }
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest < 100) {
+      setNavVisible(true);
+      setNavSolid(false);
+    } else {
+      setNavSolid(true);
+      if (latest > lastScrollY && latest > 200) {
+        setNavVisible(false);
+      } else {
+        setNavVisible(true);
       }
     }
     setLastScrollY(latest);
   });
 
   return (
-    <div className='min-h-screen bg-background overflow-x-hidden'>
-      {/* Founders Launch Banner */}
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <FoundersBanner />
-      
-      {/* Navigation - offset by banner height (~52px with py-3) */}
+
+      {/* Navigation */}
       <motion.nav
-        // Move fully above the fixed top banner when hidden so it never peeks out underneath.
         initial={{ y: -160, opacity: 0 }}
         animate={{
           y: navVisible ? 0 : -160,
@@ -314,40 +133,36 @@ export default function LandingPage() {
         className={`fixed top-11 sm:top-10 left-0 right-0 z-50 backdrop-blur border-b transition-colors duration-300 ${
           navSolid ? "bg-background/98 shadow-sm" : "bg-background/80"
         }`}>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='flex items-center justify-between h-16'>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
             <motion.div whileHover={{ scale: 1.02 }}>
-              <GateKprLogoFull size='md' />
+              <GateKprLogoFull size="md" />
             </motion.div>
-            <div className='hidden md:flex items-center gap-8'>
+            <div className="hidden md:flex items-center gap-8">
               {[
                 { label: "Features", href: "#features" },
+                { label: "Who It's For", href: "#who-its-for" },
                 { label: "Pricing", href: "#pricing" },
-                { label: "How It Works", href: "#how-it-works" },
               ].map((item) => (
                 <motion.a
                   key={item.label}
                   href={item.href}
-                  className='text-sm text-muted-foreground hover:text-foreground transition-colors'
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   whileHover={{ y: -2 }}>
                   {item.label}
                 </motion.a>
               ))}
             </div>
-            <div className='flex items-center gap-3'>
-              <Link to='/login'>
-                <Button variant='ghost' size='sm'>
+            <div className="flex items-center gap-3">
+              <Link to="/login">
+                <Button variant="ghost" size="sm">
                   Sign In
                 </Button>
               </Link>
-              <Link to='/signup'>
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}>
-                  <Button
-                    size='sm'
-                    className='bg-secondary hover:bg-secondary/90'>
-                    Get Started
+              <Link to="/signup">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button size="sm" className="bg-secondary hover:bg-secondary/90">
+                    Start Your Community
                   </Button>
                 </motion.div>
               </Link>
@@ -356,61 +171,127 @@ export default function LandingPage() {
         </div>
       </motion.nav>
 
-      {/* Hero Section */}
-      <HeroSection />
+      {/* ─── 1. HERO ─── */}
+      <section className="pt-32 sm:pt-28 pb-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
+            The easiest way to{" "}
+            <span className="text-secondary">run an HOA</span>
+          </motion.h1>
 
-      {/* Why Choose GateKpr Section */}
-      <section className='py-20 bg-secondary/20 px-4 sm:px-6 lg:px-8 overflow-hidden'>
-        <div className='max-w-7xl mx-auto'>
-          <AnimatedSection className='text-center mb-12'>
-            <h2 className='text-3xl sm:text-4xl font-bold mb-4 text-foreground'>
-              Why Choose GateKpr?
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+            A modern platform that automates HOA finances, payments, and
+            communication—for communities of any size.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link to="/signup">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-lg px-8">
+                  Start Your Community
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </motion.div>
+            </Link>
+            <motion.a href="#features" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button size="lg" variant="outline" className="text-lg px-8">
+                See How It Works
+              </Button>
+            </motion.a>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.4 }}
+            className="text-sm text-muted-foreground mt-6">
+            No credit card required · Set up in minutes · Simple, transparent pricing
+          </motion.p>
+        </div>
+      </section>
+
+      {/* ─── 2. THE PROBLEM ─── */}
+      <section className="py-20 bg-muted/40 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <AnimatedSection className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              HOA management shouldn't be this hard
             </h2>
-            <p className='text-lg text-muted-foreground max-w-2xl mx-auto'>
-              We built GateKpr because we know running an HOA shouldn't feel
-              like a second job. Here's what makes us different.
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Most communities are stuck with tools that weren't built for them.
             </p>
           </AnimatedSection>
 
           <motion.div
-            initial='hidden'
-            whileInView='visible'
-            viewport={{ once: true, margin: "-100px" }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
-            className='grid md:grid-cols-3 gap-8 max-w-4xl mx-auto'>
+            className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {[
-              {
-                title: "No Hidden Fees",
-                desc: "Transparent pricing tailored to your community size. No surprises.",
-              },
-              {
-                title: "Self-Service Setup",
-                desc: "Sign up, share your QR code, and you're ready to go. No training needed.",
-              },
-              {
-                title: "Built for Simplicity",
-                desc: "Clean design that residents and board members actually enjoy using.",
-              },
-            ].map((item, index) => (
+              { icon: FileText, text: "Spreadsheets and manual bookkeeping" },
+              { icon: BarChart3, text: "Confusing financial reports no one understands" },
+              { icon: Wrench, text: "Outdated software built for rental properties" },
+              { icon: XCircle, text: "Fragmented tools for payments, docs, and communication" },
+            ].map((item, i) => (
               <motion.div
-                key={index}
+                key={i}
                 variants={fadeInUp}
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.25 }}
-                className='cursor-default'>
-                <Card className='bg-card border h-full overflow-hidden group hover:shadow-lg transition-all duration-300'>
-                  <CardContent className='p-6 text-center relative'>
-                    <motion.div
-                      className='h-12 w-12 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-secondary/30 transition-colors duration-300'
-                      whileHover={{ scale: 1.1 }}>
-                      <CheckCircle className='h-6 w-6 text-secondary group-hover:scale-110 transition-transform duration-300' />
-                    </motion.div>
-                    <h3 className='font-semibold text-lg mb-2 text-foreground'>
-                      {item.title}
-                    </h3>
-                    <p className='text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300'>
-                      {item.desc}
-                    </p>
+                className="flex items-center gap-4 p-4 rounded-xl bg-card border">
+                <div className="h-10 w-10 rounded-lg bg-muted flex items-center justify-center flex-shrink-0">
+                  <item.icon className="h-5 w-5 text-muted-foreground" />
+                </div>
+                <p className="text-sm text-foreground">{item.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ─── 3. THE SOLUTION ─── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <AnimatedSection>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              One modern platform for your entire community
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
+              GateKpr replaces spreadsheets, outdated software, and fragmented tools
+              with one clean platform that automates finances and keeps your community informed.
+            </p>
+          </AnimatedSection>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={staggerContainer}
+            className="grid sm:grid-cols-3 gap-6">
+            {[
+              { icon: Landmark, title: "Financial Automation", desc: "Bank-connected reporting that runs itself" },
+              { icon: CreditCard, title: "Payments & Dues", desc: "Online collection with automatic reminders" },
+              { icon: Bell, title: "Communication", desc: "Announcements, documents, and notifications" },
+            ].map((item, i) => (
+              <motion.div key={i} variants={fadeInUp}>
+                <Card className="border-2 hover:border-secondary/40 transition-all hover:shadow-lg h-full">
+                  <CardContent className="p-6 text-center">
+                    <div className="h-12 w-12 rounded-xl bg-secondary/10 flex items-center justify-center mx-auto mb-4">
+                      <item.icon className="h-6 w-6 text-secondary" />
+                    </div>
+                    <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground">{item.desc}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -419,212 +300,156 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Who We Serve */}
-      <section className='py-20 bg-muted/50 px-4 sm:px-6 lg:px-8'>
-        <div className='max-w-7xl mx-auto'>
-          <AnimatedSection className='text-center mb-12'>
-            <h2 className='text-3xl sm:text-4xl font-bold text-foreground mb-4'>
-              Built for Communities Like Yours
-            </h2>
-            <p className='text-lg text-muted-foreground max-w-2xl mx-auto'>
-              Whether you're a volunteer board member or managing multiple
-              properties, GateKpr scales with you.
-            </p>
-          </AnimatedSection>
-
-          <div className='grid md:grid-cols-2 gap-8 max-w-4xl mx-auto'>
+      {/* ─── 4. AUTOMATED FINANCIAL REPORTING (Core Feature) ─── */}
+      <section className="py-20 bg-secondary/5 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection>
-              <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.2 }}>
-                <Card className='border-2 hover:border-secondary/50 transition-all hover:shadow-lg h-full'>
-                  <CardContent className='p-8'>
-                    <motion.div
-                      className='h-14 w-14 rounded-2xl bg-secondary/10 flex items-center justify-center mb-6'
-                      whileHover={{ rotate: 5, scale: 1.1 }}>
-                      <Home className='h-7 w-7 text-secondary' />
-                    </motion.div>
-                    <h3 className='text-xl font-bold text-foreground mb-3'>
-                      Self-Managed HOAs
-                    </h3>
-                    <p className='text-muted-foreground mb-4'>
-                      Volunteer board members juggling HOA duties with busy
-                      lives. GateKpr automates the tedious stuff so you can
-                      focus on building community.
-                    </p>
-                    <ul className='space-y-2'>
-                      {[
-                        "No accounting degree needed",
-                        "Automatic payment reminders",
-                        "Easy resident onboarding",
-                      ].map((item, i) => (
-                        <motion.li
-                          key={item}
-                          className='flex items-center gap-2 text-sm'
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ delay: i * 0.1 }}
-                          viewport={{ once: true }}>
-                          <CheckCircle className='h-4 w-4 text-secondary flex-shrink-0' />
-                          <span>{item}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
+              <div className="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <TrendingUp className="h-4 w-4" />
+                Core Feature
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                Automated financial reporting
+              </h2>
+              <p className="text-lg text-muted-foreground mb-6">
+                GateKpr connects securely to your HOA bank account and automatically
+                generates monthly, quarterly, and annual financial reports. Transactions sync
+                so spending, receipts, and allocations stay organized—no manual bookkeeping required.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  "Bank transactions sync automatically",
+                  "Monthly, quarterly & annual reports generated for you",
+                  "Categorized spending and allocations",
+                  "Export-ready reports for board meetings and audits",
+                  "No accounting degree needed",
+                ].map((item, i) => (
+                  <motion.li
+                    key={i}
+                    className="flex items-center gap-3 text-sm"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.08 }}
+                    viewport={{ once: true }}>
+                    <CheckCircle className="h-4 w-4 text-secondary flex-shrink-0" />
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
             </AnimatedSection>
 
+            {/* Financial report mockup */}
             <AnimatedSection>
-              <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.2 }}>
-                <Card className='border-2 hover:border-secondary/50 transition-all hover:shadow-lg h-full'>
-                  <CardContent className='p-8'>
-                    <motion.div
-                      className='h-14 w-14 rounded-2xl bg-secondary/10 flex items-center justify-center mb-6'
-                      whileHover={{ rotate: -5, scale: 1.1 }}>
-                      <Building2 className='h-7 w-7 text-secondary' />
-                    </motion.div>
-                    <h3 className='text-xl font-bold text-foreground mb-3'>
-                      Property Management Companies
-                    </h3>
-                    <p className='text-muted-foreground mb-4'>
-                      Managing multiple HOAs? Our Partner plan gives you a
-                      unified dashboard with per-property pricing that scales.
-                    </p>
-                    <ul className='space-y-2'>
-                      {[
-                        "Multi-property dashboard",
-                        "Custom KPI metrics & drill-downs",
-                        "Bulk operations & volume discounts",
-                      ].map((item, i) => (
-                        <motion.li
-                          key={item}
-                          className='flex items-center gap-2 text-sm'
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ delay: i * 0.1 }}
-                          viewport={{ once: true }}>
-                          <CheckCircle className='h-4 w-4 text-secondary flex-shrink-0' />
-                          <span>{item}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
+              <Card className="border-2 overflow-hidden">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between mb-6">
+                    <div>
+                      <p className="text-sm text-muted-foreground">Monthly Summary</p>
+                      <p className="text-2xl font-bold text-foreground">March 2026</p>
+                    </div>
+                    <div className="h-10 w-10 rounded-lg bg-secondary/10 flex items-center justify-center">
+                      <PieChart className="h-5 w-5 text-secondary" />
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between py-3 border-b">
+                      <span className="text-sm text-muted-foreground">Total Income</span>
+                      <span className="font-semibold text-foreground">$24,750.00</span>
+                    </div>
+                    <div className="flex items-center justify-between py-3 border-b">
+                      <span className="text-sm text-muted-foreground">Total Expenses</span>
+                      <span className="font-semibold text-foreground">$8,320.00</span>
+                    </div>
+                    <div className="flex items-center justify-between py-3 border-b">
+                      <span className="text-sm text-muted-foreground">Net Balance</span>
+                      <span className="font-bold text-secondary">$16,430.00</span>
+                    </div>
+                    <div className="pt-2">
+                      <p className="text-xs text-muted-foreground mb-3">Top Categories</p>
+                      <div className="space-y-2">
+                        {[
+                          { label: "Landscaping", pct: 38 },
+                          { label: "Utilities", pct: 25 },
+                          { label: "Insurance", pct: 22 },
+                          { label: "Maintenance", pct: 15 },
+                        ].map((cat) => (
+                          <div key={cat.label} className="flex items-center gap-3">
+                            <span className="text-xs text-muted-foreground w-24">{cat.label}</span>
+                            <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden">
+                              <div
+                                className="h-full bg-secondary/60 rounded-full"
+                                style={{ width: `${cat.pct}%` }}
+                              />
+                            </div>
+                            <span className="text-xs text-muted-foreground w-8 text-right">{cat.pct}%</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </AnimatedSection>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id='features' className='py-20 px-4 sm:px-6 lg:px-8'>
-        <div className='max-w-7xl mx-auto'>
-          <AnimatedSection className='text-center mb-16'>
-            <h2 className='text-3xl sm:text-4xl font-bold text-foreground mb-4'>
-              Everything You Need to Run Your HOA
+      {/* ─── 5. COMPETITIVE ADVANTAGES ─── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <AnimatedSection className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Why communities choose GateKpr
             </h2>
-            <p className='text-lg text-muted-foreground max-w-2xl mx-auto'>
-              From collecting dues to tracking maintenance requests, GateKpr
-              handles it all with a clean, intuitive interface your residents
-              will love.
-            </p>
           </AnimatedSection>
 
           <motion.div
-            ref={featuresRef}
-            initial='hidden'
-            animate={featuresInView ? "visible" : "hidden"}
-            variants={staggerContainer}
-            className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.25 }}
-                className='cursor-default'>
-                <Card className='group hover:shadow-xl transition-all duration-300 border-2 hover:border-secondary/40 h-full overflow-hidden relative'>
-                  <CardContent className='p-6 relative'>
-                    {/* Subtle shimmer effect on hover */}
-                    <div className='absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
-                    <motion.div
-                      className='h-12 w-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-all duration-300 relative z-10'
-                      whileHover={{ rotate: 8, scale: 1.05 }}>
-                      <feature.icon className='h-6 w-6 text-secondary group-hover:scale-110 transition-transform duration-300' />
-                    </motion.div>
-                    <h3 className='text-lg font-semibold text-foreground mb-2 relative z-10 group-hover:text-secondary transition-colors duration-300'>
-                      {feature.title}
-                    </h3>
-                    <p className='text-muted-foreground relative z-10'>
-                      {feature.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Competitor Pain Points - What We Solve */}
-      <section className='py-16 px-4 sm:px-6 lg:px-8 bg-muted/30'>
-        <div className='max-w-5xl mx-auto'>
-          <AnimatedSection className='text-center mb-12'>
-            <h2 className='text-2xl sm:text-3xl font-bold text-foreground mb-3'>
-              Frustrated with Your Current HOA App?
-            </h2>
-            <p className='text-muted-foreground max-w-2xl mx-auto'>
-              We've heard the complaints. Here's how GateKpr is different.
-            </p>
-          </AnimatedSection>
-
-          <motion.div
-            initial='hidden'
-            whileInView='visible'
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
-            className='grid md:grid-cols-2 gap-6'>
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                problem: "I can never see the status of my service request",
-                solution:
-                  "Real-time status tracking with notifications at every step—Open, In Progress, Resolved, Closed.",
+                icon: CreditCard,
+                title: "Simple Pricing",
+                desc: "Everything included out of the box. No hidden fees, no per-resident charges, no paying for features you'll never use.",
               },
               {
-                problem: "The app crashes constantly and is unusable",
-                solution:
-                  "Modern web app that works flawlessly on any device. No app store downloads required.",
+                icon: Home,
+                title: "Built for HOAs",
+                desc: "Purpose-built for homeowner communities—not repurposed rental property software. Simpler workflows, better results.",
               },
               {
-                problem: "I never get notified when things change",
-                solution:
-                  "Automated email notifications for payments, maintenance updates, and reservation approvals.",
+                icon: Zap,
+                title: "No Feature Bloat",
+                desc: "Only the tools your community actually needs: finances, reporting, payments, communication, and transparency.",
               },
               {
-                problem: "The reports are useless for board meetings",
-                solution:
-                  "Export professional PDF and Excel financial reports with one click. Perfect for audits.",
+                icon: Smartphone,
+                title: "Works Anywhere",
+                desc: "Access from any web browser or mobile device. Residents, board members, and managers can use it anytime.",
               },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.25 }}
-                className='group cursor-default'>
-                <Card className='h-full border-2 hover:border-secondary/40 hover:shadow-lg transition-all duration-300'>
-                  <CardContent className='p-6'>
-                    <div className='flex items-start gap-3 mb-4'>
-                      <div className='h-10 w-10 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors duration-300'>
-                        <Eye className='h-5 w-5 text-secondary' />
-                      </div>
-                      <p className='text-sm text-muted-foreground italic pt-2'>
-                        "{item.problem}"
-                      </p>
+              {
+                icon: Shield,
+                title: "Modern & Secure",
+                desc: "A clean, intuitive interface that feels like Stripe or Mercury—not outdated property management software.",
+              },
+              {
+                icon: TrendingUp,
+                title: "Financial Clarity",
+                desc: "Automated reports, categorized spending, and dashboards that make HOA finances easy to understand.",
+              },
+            ].map((item, i) => (
+              <motion.div key={i} variants={fadeInUp} whileHover={{ y: -4 }} transition={{ duration: 0.25 }}>
+                <Card className="border hover:border-secondary/40 hover:shadow-lg transition-all duration-300 h-full">
+                  <CardContent className="p-6">
+                    <div className="h-10 w-10 rounded-lg bg-secondary/10 flex items-center justify-center mb-4">
+                      <item.icon className="h-5 w-5 text-secondary" />
                     </div>
-                    <div className='flex items-start gap-3 pl-1'>
-                      <CheckCircle className='h-5 w-5 text-secondary flex-shrink-0 mt-0.5' />
-                      <p className='text-sm text-foreground'>{item.solution}</p>
-                    </div>
+                    <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground">{item.desc}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -633,163 +458,278 @@ export default function LandingPage() {
         </div>
       </section>
 
-
-      {/* How It Works Section */}
-      <section
-        id='how-it-works'
-        className='py-20 bg-muted/50 px-4 sm:px-6 lg:px-8'>
-        <div className='max-w-5xl mx-auto'>
-          <AnimatedSection className='text-center mb-16'>
-            <h2 className='text-3xl sm:text-4xl font-bold text-foreground mb-4'>
-              Get Started in 3 Simple Steps
+      {/* ─── 6. KEY FEATURES ─── */}
+      <section id="features" className="py-20 bg-muted/30 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <AnimatedSection className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Everything you need to run your HOA
             </h2>
-            <p className='text-lg text-muted-foreground max-w-2xl mx-auto'>
-              No demos. No sales calls. Just sign up and start managing your
-              community.
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Core tools designed for HOA communities. Nothing unnecessary, nothing confusing.
             </p>
           </AnimatedSection>
 
           <motion.div
-            initial='hidden'
-            whileInView='visible'
-            viewport={{ once: true, margin: "-100px" }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
-            className='grid md:grid-cols-3 gap-8'>
-            {howItWorksSteps.map((step, index) => (
-              <motion.div key={index} variants={fadeInUp} className='relative'>
-                <Card className='border-2 hover:border-secondary/40 transition-all duration-300 hover:shadow-lg h-full'>
-                  <CardContent className='p-6 text-center'>
-                    <div className='absolute -top-4 left-1/2 -translate-x-1/2 h-8 w-8 rounded-full bg-secondary text-secondary-foreground flex items-center justify-center font-bold text-sm'>
-                      {step.step}
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: BarChart3,
+                title: "Automated Financial Reports",
+                desc: "Monthly, quarterly, and annual reports generated from your bank transactions.",
+              },
+              {
+                icon: Landmark,
+                title: "Bank Integrations",
+                desc: "Securely connect your HOA bank account. Transactions sync automatically.",
+              },
+              {
+                icon: CreditCard,
+                title: "Dues & Payment Tracking",
+                desc: "Collect dues online via credit card or ACH with automatic reminders.",
+              },
+              {
+                icon: Bell,
+                title: "Resident Communication",
+                desc: "Broadcast announcements with email notifications to keep everyone informed.",
+              },
+              {
+                icon: FileText,
+                title: "Document Sharing",
+                desc: "Store and share bylaws, meeting minutes, budgets, and community rules.",
+              },
+              {
+                icon: PieChart,
+                title: "Financial Dashboards",
+                desc: "Clear visualizations of income, expenses, and community financial health.",
+              },
+            ].map((feature, i) => (
+              <motion.div key={i} variants={fadeInUp} whileHover={{ y: -4 }} transition={{ duration: 0.25 }}>
+                <Card className="border-2 hover:border-secondary/40 hover:shadow-lg transition-all duration-300 h-full">
+                  <CardContent className="p-6">
+                    <div className="h-12 w-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-4">
+                      <feature.icon className="h-6 w-6 text-secondary" />
                     </div>
-                    <motion.div
-                      className='h-14 w-14 rounded-2xl bg-secondary/10 flex items-center justify-center mx-auto mt-4 mb-4'
-                      whileHover={{ rotate: 5, scale: 1.1 }}>
-                      <step.icon className='h-7 w-7 text-secondary' />
-                    </motion.div>
-                    <h3 className='font-semibold text-lg text-foreground mb-2'>
-                      {step.title}
-                    </h3>
-                    <p className='text-sm text-muted-foreground'>
-                      {step.description}
-                    </p>
+                    <h3 className="font-semibold text-lg text-foreground mb-2">{feature.title}</h3>
+                    <p className="text-sm text-muted-foreground">{feature.desc}</p>
                   </CardContent>
                 </Card>
-                {index < howItWorksSteps.length - 1 && (
-                  <div className='hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2'>
-                    <ArrowRight className='h-6 w-6 text-muted-foreground/40' />
-                  </div>
-                )}
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
+      {/* ─── 7. WHO GATEKPR IS FOR ─── */}
+      <section id="who-its-for" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <AnimatedSection className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Built for every role in your community
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Whether you manage properties professionally, volunteer on a board,
+              or just want to pay your dues—GateKpr works for you.
+            </p>
+          </AnimatedSection>
 
-      {/* Pricing Section */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={staggerContainer}
+            className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Building2,
+                title: "Property Managers",
+                subtitle: "Manage multiple communities efficiently",
+                benefits: [
+                  "Centralized financial reporting",
+                  "Automated bookkeeping across HOAs",
+                  "Custom KPI metrics & drill-downs",
+                  "Reduced administrative workload",
+                ],
+              },
+              {
+                icon: Home,
+                title: "HOA Boards",
+                subtitle: "Run your community like a pro—without hiring one",
+                benefits: [
+                  "Automated financial reports",
+                  "Simplified dues management",
+                  "Easy resident communication",
+                  "Transparent financial dashboards",
+                ],
+              },
+              {
+                icon: UserCircle,
+                title: "Residents",
+                subtitle: "Visibility and convenience for homeowners",
+                benefits: [
+                  "Easy online dues payments",
+                  "Access to financial summaries",
+                  "Community announcements",
+                  "Shared documents and updates",
+                ],
+              },
+            ].map((persona, i) => (
+              <motion.div key={i} variants={fadeInUp} whileHover={{ y: -4 }} transition={{ duration: 0.25 }}>
+                <Card className="border-2 hover:border-secondary/40 hover:shadow-lg transition-all duration-300 h-full">
+                  <CardContent className="p-6">
+                    <div className="h-12 w-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-4">
+                      <persona.icon className="h-6 w-6 text-secondary" />
+                    </div>
+                    <h3 className="font-semibold text-lg text-foreground mb-1">{persona.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-4">{persona.subtitle}</p>
+                    <ul className="space-y-2">
+                      {persona.benefits.map((b, j) => (
+                        <li key={j} className="flex items-center gap-2 text-sm">
+                          <CheckCircle className="h-4 w-4 text-secondary flex-shrink-0" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ─── 8. TRUST & TRANSPARENCY ─── */}
+      <section className="py-20 bg-muted/30 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto text-center">
+          <AnimatedSection>
+            <div className="h-14 w-14 rounded-2xl bg-secondary/10 flex items-center justify-center mx-auto mb-6">
+              <Shield className="h-7 w-7 text-secondary" />
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Financial transparency builds trust
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              When residents can see where their money goes, trust grows.
+              GateKpr gives every board member and homeowner clear visibility
+              into community finances—no more confusion, no more questions.
+            </p>
+            <div className="grid sm:grid-cols-3 gap-6">
+              {[
+                { label: "Clear dashboards", desc: "See income, expenses, and balances at a glance" },
+                { label: "Categorized spending", desc: "Know exactly where every dollar goes" },
+                { label: "Simplified reports", desc: "Financial summaries anyone can understand" },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className="p-4 rounded-xl bg-card border">
+                  <p className="font-semibold text-foreground text-sm mb-1">{item.label}</p>
+                  <p className="text-xs text-muted-foreground">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Pricing */}
       <PricingSection />
 
-      {/* Final CTA */}
-      <section className='py-20 bg-primary px-4 sm:px-6 lg:px-8'>
-        <div className='max-w-3xl mx-auto text-center'>
+      {/* ─── 9. FINAL CTA ─── */}
+      <section className="py-24 bg-primary px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto text-center">
           <AnimatedSection>
-            <h2 className='text-3xl sm:text-4xl font-bold mb-4 text-primary-foreground'>
-              Ready to Simplify Your HOA?
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary-foreground">
+              Run your HOA the modern way
             </h2>
-            <p className='text-lg text-primary-foreground/90 mb-8'>
-              Join communities already using GateKpr to streamline payments,
-              documents, and communication.
+            <p className="text-lg text-primary-foreground/90 mb-8 max-w-xl mx-auto">
+              GateKpr simplifies finances, communication, and transparency
+              for communities and property managers.
             </p>
-            <Link to='/signup'>
+            <Link to="/signup">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className='inline-block'>
+                className="inline-block">
                 <Button
-                  size='lg'
-                  className='bg-secondary text-secondary-foreground hover:bg-secondary/90 text-lg px-8'>
-                  Start Your Free Trial
-                  <ArrowRight className='ml-2 h-5 w-5' />
+                  size="lg"
+                  className="bg-secondary text-secondary-foreground hover:bg-secondary/90 text-lg px-8">
+                  Start Your Community
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </motion.div>
             </Link>
-            <p className='text-sm text-primary-foreground/70 mt-4'>
-              No credit card required • Set up in minutes
+            <p className="text-sm text-primary-foreground/70 mt-4">
+              No credit card required · Set up in minutes
             </p>
           </AnimatedSection>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className='bg-foreground py-12 px-4 sm:px-6 lg:px-8'>
-        <div className='max-w-7xl mx-auto'>
+      <footer className="bg-foreground py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className='grid md:grid-cols-4 gap-8 mb-8'>
+            className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <div className='mb-4'>
-                <GateKprLogoFull size='md' />
+              <div className="mb-4">
+                <GateKprLogoFull size="md" />
               </div>
-              <p className='text-sm text-background/80'>
+              <p className="text-sm text-background/80">
                 Modern HOA management for communities that care.
               </p>
             </div>
             <div>
-              <h4 className='font-semibold mb-4 text-background'>Product</h4>
-              <ul className='space-y-2 text-sm text-background/70'>
+              <h4 className="font-semibold mb-4 text-background">Product</h4>
+              <ul className="space-y-2 text-sm text-background/70">
                 <li>
-                  <a
-                    href='#how-it-works'
-                    className='hover:text-background transition-colors'>
-                    How It Works
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href='#features'
-                    className='hover:text-background transition-colors'>
+                  <a href="#features" className="hover:text-background transition-colors">
                     Features
                   </a>
                 </li>
                 <li>
-                  <Link
-                    to='/login'
-                    className='hover:text-background transition-colors'>
-                    Sign In
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className='font-semibold mb-4 text-background'>
-                Get Started
-              </h4>
-              <ul className='space-y-2 text-sm text-background/70'>
-                <li>
-                  <Link
-                    to='/signup'
-                    className='hover:text-background transition-colors'>
-                    Create Your HOA
-                  </Link>
+                  <a href="#who-its-for" className="hover:text-background transition-colors">
+                    Who It's For
+                  </a>
                 </li>
                 <li>
-                  <a
-                    href='#pricing'
-                    className='hover:text-background transition-colors'>
+                  <a href="#pricing" className="hover:text-background transition-colors">
                     Pricing
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className='font-semibold mb-4 text-background'>Contact</h4>
-              <ul className='space-y-2 text-sm text-background/70'>
-                <li className='flex items-center gap-2'>
-                  <Mail className='h-4 w-4' />
+              <h4 className="font-semibold mb-4 text-background">Get Started</h4>
+              <ul className="space-y-2 text-sm text-background/70">
+                <li>
+                  <Link to="/signup" className="hover:text-background transition-colors">
+                    Start Your Community
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/login" className="hover:text-background transition-colors">
+                    Sign In
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4 text-background">Contact</h4>
+              <ul className="space-y-2 text-sm text-background/70">
+                <li className="flex items-center gap-2">
+                  <Mail className="h-4 w-4" />
                   hello@gatekpr.app
                 </li>
               </ul>
@@ -800,7 +740,7 @@ export default function LandingPage() {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
             viewport={{ once: true }}
-            className='border-t border-background/20 pt-8 text-center text-sm text-background/70'>
+            className="border-t border-background/20 pt-8 text-center text-sm text-background/70">
             <p>© {new Date().getFullYear()} GateKpr. All rights reserved.</p>
           </motion.div>
         </div>
