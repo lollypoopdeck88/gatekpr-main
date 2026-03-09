@@ -186,7 +186,7 @@ export default function LandingPage() {
           <img
             src={heroCommunity}
             alt="Open gate welcoming residents into a modern community"
-            className="w-full h-[120%] object-cover"
+            className="w-full h-[120%] object-cover object-center scale-100"
             loading="eager"
           />
           {/* White wash overlay */}
