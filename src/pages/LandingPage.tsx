@@ -87,6 +87,7 @@ export default function LandingPage() {
   const [navVisible, setNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [navSolid, setNavSolid] = useState(false);
+  const heroParallaxY = useTransform(scrollY, [0, 600], [0, 200]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest < 100) {
@@ -176,8 +177,23 @@ export default function LandingPage() {
       </motion.nav>
 
       {/* ─── 1. HERO ─── */}
-      <section className="pt-32 sm:pt-28 pb-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="relative pt-44 sm:pt-48 pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[600px] flex items-center">
+        {/* Parallax background image */}
+        <motion.div
+          className="absolute inset-0 z-0"
+          style={{ y: heroParallaxY }}
+        >
+          <img
+            src={heroCommunity}
+            alt="Open gate welcoming residents into a modern community"
+            className="w-full h-[120%] object-cover"
+            loading="eager"
+          />
+          {/* White wash overlay */}
+          <div className="absolute inset-0 bg-background/75" />
+        </motion.div>
+
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -210,7 +226,7 @@ export default function LandingPage() {
               </motion.div>
             </Link>
             <motion.a href="#features" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button size="lg" variant="outline" className="text-lg px-8">
+              <Button size="lg" variant="outline" className="text-lg px-8 bg-background/50 backdrop-blur-sm">
                 See How It Works
               </Button>
             </motion.a>
@@ -223,19 +239,6 @@ export default function LandingPage() {
             className="text-sm text-muted-foreground mt-6">
             Set up in minutes · Simple, transparent pricing
           </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-12 max-w-3xl mx-auto">
-            <img
-              src={heroCommunity}
-              alt="Open gate welcoming residents into a modern community"
-              className="rounded-2xl shadow-xl w-full object-cover"
-              loading="eager"
-            />
-          </motion.div>
         </div>
       </section>
 
