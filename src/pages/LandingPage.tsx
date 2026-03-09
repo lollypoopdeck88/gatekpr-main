@@ -497,8 +497,8 @@ export default function LandingPage() {
               },
               {
                 icon: Bell,
-                title: "Resident Communication",
-                desc: "Broadcast announcements with email notifications to keep everyone informed.",
+                title: "Email, SMS & Push Notifications",
+                desc: "Reach residents instantly via email, text, or push notifications—with preference controls.",
               },
               {
                 icon: FileText,
@@ -509,6 +509,21 @@ export default function LandingPage() {
                 icon: PieChart,
                 title: "Financial Dashboards",
                 desc: "Clear visualizations of income, expenses, and community financial health.",
+              },
+              {
+                icon: CalendarDays,
+                title: "Space Reservations",
+                desc: "Let residents book clubhouses, pools, and courts with availability rules and admin approvals.",
+              },
+              {
+                icon: Vote,
+                title: "Polls & Voting",
+                desc: "Attach polls to announcements for community decisions with real-time results.",
+              },
+              {
+                icon: Wrench,
+                title: "Maintenance Requests",
+                desc: "Residents submit requests with status tracking, updates, and admin assignment.",
               },
             ].map((feature, i) => (
               <motion.div key={i} variants={fadeInUp} whileHover={{ y: -4 }} transition={{ duration: 0.25 }}>
