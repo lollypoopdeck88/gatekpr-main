@@ -23,6 +23,9 @@ import {
   Mail,
   Globe,
   UserCircle,
+  Vote,
+  CalendarDays,
+  MessageSquare,
 } from "lucide-react";
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
