@@ -39,6 +39,7 @@ import {
 } from "framer-motion";
 import { FoundersBanner } from "@/components/landing/FoundersBanner";
 import { PricingSection } from "@/components/landing/PricingSection";
+import heroCommunity from "@/assets/hero-community.jpg";
 
 const easeOut: Easing = [0.16, 1, 0.3, 1];
 
