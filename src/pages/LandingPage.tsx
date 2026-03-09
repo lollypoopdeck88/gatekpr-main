@@ -87,7 +87,7 @@ export default function LandingPage() {
   const [navVisible, setNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [navSolid, setNavSolid] = useState(false);
-  const heroParallaxY = useTransform(scrollY, [0, 600], [0, 200]);
+  const heroParallaxY = useTransform(scrollY, [0, 600], [0, 100]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest < 100) {
