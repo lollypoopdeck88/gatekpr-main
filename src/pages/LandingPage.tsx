@@ -181,7 +181,7 @@ export default function LandingPage() {
         {/* Parallax background image */}
         <motion.div
           className="absolute inset-0 z-0"
-          style={{ y: useTransform(scrollY, [0, 600], [0, 200]) }}
+          style={{ y: heroParallaxY }}
         >
           <img
             src={heroCommunity}
