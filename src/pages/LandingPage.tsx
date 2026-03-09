@@ -220,7 +220,7 @@ export default function LandingPage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.4 }}
             className="text-sm text-muted-foreground mt-6">
-            No credit card required · Set up in minutes · Simple, transparent pricing
+            Set up in minutes · Simple, transparent pricing
           </motion.p>
         </div>
       </section>
