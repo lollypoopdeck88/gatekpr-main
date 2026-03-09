@@ -570,6 +570,7 @@ export default function LandingPage() {
                   "Centralized financial reporting",
                   "Automated bookkeeping across HOAs",
                   "Custom KPI metrics & drill-downs",
+                  "Multi-channel notification management",
                   "Reduced administrative workload",
                 ],
               },
@@ -580,7 +581,8 @@ export default function LandingPage() {
                 benefits: [
                   "Automated financial reports",
                   "Simplified dues management",
-                  "Easy resident communication",
+                  "Polls & voting on announcements",
+                  "Maintenance request tracking",
                   "Transparent financial dashboards",
                 ],
               },
@@ -590,9 +592,10 @@ export default function LandingPage() {
                 subtitle: "Visibility and convenience for homeowners",
                 benefits: [
                   "Easy online dues payments",
-                  "Access to financial summaries",
-                  "Community announcements",
-                  "Shared documents and updates",
+                  "Reserve community spaces",
+                  "Vote on community polls",
+                  "Submit maintenance requests",
+                  "Community announcements & docs",
                 ],
               },
             ].map((persona, i) => (
