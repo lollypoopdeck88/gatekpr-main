@@ -79,15 +79,29 @@ function AnimatedSection({
 
 export default function LandingPage() {
   const { user, isSuperAdmin, role, isLoading } = useAuth();
-
-  if (!isLoading && user && role !== null && isSuperAdmin) {
-    return <Navigate to="/admin/super" replace />;
-  }
-
   const { scrollY } = useScroll();
   const [navVisible, setNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [navSolid, setNavSolid] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest < 100) {
+      setNavVisible(true);
+      setNavSolid(false);
+    } else {
+      setNavSolid(true);
+      if (latest > lastScrollY && latest > 200) {
+        setNavVisible(false);
+      } else {
+        setNavVisible(true);
+      }
+    }
+    setLastScrollY(latest);
+  });
+
+  if (!isLoading && user && role !== null && isSuperAdmin) {
+    return <Navigate to="/admin/super" replace />;
+  }
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest < 100) {
