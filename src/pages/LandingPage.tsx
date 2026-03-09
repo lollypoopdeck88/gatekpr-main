@@ -23,6 +23,9 @@ import {
   Mail,
   Globe,
   UserCircle,
+  Vote,
+  CalendarDays,
+  MessageSquare,
 } from "lucide-react";
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
@@ -494,8 +497,8 @@ export default function LandingPage() {
               },
               {
                 icon: Bell,
-                title: "Resident Communication",
-                desc: "Broadcast announcements with email notifications to keep everyone informed.",
+                title: "Email, SMS & Push Notifications",
+                desc: "Reach residents instantly via email, text, or push notifications—with preference controls.",
               },
               {
                 icon: FileText,
@@ -506,6 +509,21 @@ export default function LandingPage() {
                 icon: PieChart,
                 title: "Financial Dashboards",
                 desc: "Clear visualizations of income, expenses, and community financial health.",
+              },
+              {
+                icon: CalendarDays,
+                title: "Space Reservations",
+                desc: "Let residents book clubhouses, pools, and courts with availability rules and admin approvals.",
+              },
+              {
+                icon: Vote,
+                title: "Polls & Voting",
+                desc: "Attach polls to announcements for community decisions with real-time results.",
+              },
+              {
+                icon: Wrench,
+                title: "Maintenance Requests",
+                desc: "Residents submit requests with status tracking, updates, and admin assignment.",
               },
             ].map((feature, i) => (
               <motion.div key={i} variants={fadeInUp} whileHover={{ y: -4 }} transition={{ duration: 0.25 }}>
@@ -552,6 +570,7 @@ export default function LandingPage() {
                   "Centralized financial reporting",
                   "Automated bookkeeping across HOAs",
                   "Custom KPI metrics & drill-downs",
+                  "Multi-channel notification management",
                   "Reduced administrative workload",
                 ],
               },
@@ -562,7 +581,8 @@ export default function LandingPage() {
                 benefits: [
                   "Automated financial reports",
                   "Simplified dues management",
-                  "Easy resident communication",
+                  "Polls & voting on announcements",
+                  "Maintenance request tracking",
                   "Transparent financial dashboards",
                 ],
               },
@@ -572,9 +592,10 @@ export default function LandingPage() {
                 subtitle: "Visibility and convenience for homeowners",
                 benefits: [
                   "Easy online dues payments",
-                  "Access to financial summaries",
-                  "Community announcements",
-                  "Shared documents and updates",
+                  "Reserve community spaces",
+                  "Vote on community polls",
+                  "Submit maintenance requests",
+                  "Community announcements & docs",
                 ],
               },
             ].map((persona, i) => (
