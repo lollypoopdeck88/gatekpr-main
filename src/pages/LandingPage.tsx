@@ -39,6 +39,7 @@ import {
 } from "framer-motion";
 import { FoundersBanner } from "@/components/landing/FoundersBanner";
 import { PricingSection } from "@/components/landing/PricingSection";
+import heroCommunity from "@/assets/hero-community.jpg";
 
 const easeOut: Easing = [0.16, 1, 0.3, 1];
 
@@ -222,6 +223,19 @@ export default function LandingPage() {
             className="text-sm text-muted-foreground mt-6">
             Set up in minutes · Simple, transparent pricing
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-12 max-w-3xl mx-auto">
+            <img
+              src={heroCommunity}
+              alt="Open gate welcoming residents into a modern community"
+              className="rounded-2xl shadow-xl w-full object-cover"
+              loading="eager"
+            />
+          </motion.div>
         </div>
       </section>
 
