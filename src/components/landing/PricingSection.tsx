@@ -135,31 +135,6 @@ export function PricingSection() {
           </motion.div>
         </motion.div>
 
-        {/* Property Manager CTA */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-          className="mt-12 text-center"
-        >
-          <Card className="border-2 border-dashed max-w-2xl mx-auto">
-            <CardContent className="p-6">
-              <h3 className="font-semibold text-foreground mb-2">
-                Managing multiple HOAs?
-              </h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Property management companies get volume discounts for multi-community accounts.
-              </p>
-              <a href="mailto:hello@gatekpr.app?subject=Multi-HOA Pricing Inquiry">
-                <Button variant="outline" size="sm">
-                  <Mail className="h-4 w-4 mr-2" />
-                  Inquire About Multi-HOA Pricing
-                </Button>
-              </a>
-            </CardContent>
-          </Card>
-        </motion.div>
       </div>
     </section>
   );
