@@ -180,14 +180,12 @@ export default function LandingPage() {
       <section className="relative pt-44 sm:pt-48 pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[600px] flex items-center">
         {/* Parallax background image */}
         <motion.div
-          className="absolute inset-0 z-0"
+          className="absolute inset-x-0 top-0 bottom-0 z-0"
           style={{ y: heroParallaxY }}
         >
-          <img
-            src={heroCommunity}
-            alt="Open gate welcoming residents into a modern community"
-            className="w-full h-[120%] object-cover object-center scale-100"
-            loading="eager"
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${heroCommunity})`, top: '-50px', bottom: '-50px' }}
           />
           {/* White wash overlay */}
           <div className="absolute inset-0 bg-background/75" />
